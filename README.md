@@ -1,8 +1,10 @@
-# Huawei Cloud OBS access in Laravel
+# Huawei Cloud OBS as Laravel S3 Filesystem
 
 This repository has a minimal [Laravel](https://laravel.com/) application
 that uses Huawei Cloud [Object Storage Service (OBS)](https://www.huaweicloud.com/intl/en-us/product/obs.html)
 as an [S3 Compatible Filesystem](https://laravel.com/docs/11.x/filesystem#amazon-s3-compatible-filesystems).
+
+![Screenshot of application in web browser](public/screenshot.png)
 
 ## Requirements
 
