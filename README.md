@@ -26,9 +26,9 @@ if you don't have a PHP development environment yet.
 3. Configure a Bucket Policy
    - Efect: Allow
    - Principal: Current account / select the IAM User you created in first step
-   - Resources: Entire bucket (inclusing the objects in it)
+   - Resources: Entire bucket (including the objects in it)
    - Actions: Use a template / Bucket Read/Write
-4. In the bucket Overview section, copy the "Endpoint Name" attribute.
+4. In the bucket Overview page, copy the "Endpoint" value under "Domain Name Details"
 5. Copy the `.env.example`, name it `.env` and update the following variables:
 
     ```plain
@@ -40,15 +40,22 @@ if you don't have a PHP development environment yet.
     AWS_USE_PATH_STYLE_ENDPOINT=false
     ```
 
-    Where `sa-brazil-1` is the code for LA-Sao Paulo1 Region, where your bucket
-    is created.
+    Where `AWS_DEFAULT_REGION` is the code of the region where your bucket is
+    created (`sa-brazil-1` corresponds to LA-Sao Paulo1 Region in this example),
+    and `AWS_ENDPOINT` is the Endpoint you copied in the previous step (with
+    `https://` added before).
+
+6. Run `composer install` to install dependencies
+7. Run `php artisan key:generate` to generate the `APP_KEY` in `.env`
+8. Run `php artisan migrate` to create the SQLite database (used for session storage)
+9. Run `php artisan serve` to start the application
 
 ## Troubleshooting
 
 ### Failed to listen on 127.0.0.1:8000
 
 When running `php artisan serve` in Windows, you can get the following error message:
-`Failed to listen on 127.0.0.1:8000 (reason: ?)`.
+`Failed to listen on 127.0.0.1:8000 (reason: ?)`. In this case, do the following:
 
 1. Run `php --ini` and check where is your `php.ini` configuration file (e.g.
    `C:\Users\<username>\.config\herd-lite\bin\php.ini`);
@@ -56,13 +63,13 @@ When running `php artisan serve` in Windows, you can get the following error mes
 
 Reference: <https://github.com/laravel/framework/issues/34229#issuecomment-690302895>
 
-### `cURL error 60`
+### cURL error 60
 
-When installing PHP 8.4 on Windows using Laravel's instructions, you can get the
+When installing PHP 8.4 on Windows, you can get the
 `cURL error 60: SSL peer certificate or SSH remote key was not OK` error message
-when accessing the application. This happens in Windows because Guzzle/libcurl
-cannot access Windows' certificate store to validate SSL certificates. In this
-case, do the following:
+when accessing the application. This happens in Windows because curl PHP
+extension cannot access Windows' certificate store to validate SSL certificates.
+In this case, do the following:
 
 1. Run `php --ini` and check where is your `php.ini` configuration file (e.g.
    `C:\Users\<username>\.config\herd-lite\bin\php.ini`);

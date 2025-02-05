@@ -61,7 +61,7 @@
               <form method="POST" action="/delete">
                   @csrf
                   <input type="hidden" name="_method" value="DELETE">
-                  <input type="hidden" name="object_key" value="{{ $file }}aaa">
+                  <input type="hidden" name="object_key" value="{{ $file }}">
                   <a href="#" onclick="deleteObject(this, '{{ $file }}')">Delete</a>
               </form>
               </td>
