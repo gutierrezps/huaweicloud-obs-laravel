@@ -6,6 +6,12 @@ as an [S3 Compatible Filesystem](https://laravel.com/docs/11.x/filesystem#amazon
 
 ![Screenshot of application in web browser](public/screenshot.png)
 
+Main files:
+
+- `routes\web.php`
+- `app\Http\Controllers\ObsController.php`
+- `resources\views\obs-console.blade.php`
+
 ## Requirements
 
 - PHP 8.2
